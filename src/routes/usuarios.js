@@ -28,7 +28,14 @@ router.get("/usuarios/:id", (req, res) => {
         .then ((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
-
+//Get a user for email   
+router.get("/usuarios/:email/:password", (req, res) => {
+    const { email, password } = req.params;
+    usuariosSchema
+        .findOne({ email, password })
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message: error }));
+});
 // update a user 
 router.put("/usuarios/:id", (req, res) => {
     const { id } = req.params;
