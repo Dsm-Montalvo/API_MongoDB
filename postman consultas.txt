@@ -1,0 +1,34 @@
+Metodo POST
+http://127.0.0.1:9000/api/users
+
+{
+    "name": "juan",
+    "app": "Montalvo",
+    "apm": "Montalvo",
+    "date": "2024/03/24",
+    "email": "al221811793@gmail.com",
+    "password": "1234568"
+}
+
+Metodo GET ALL
+http://127.0.0.1:9000/api/users
+
+Metodo GET ONE
+
+http://127.0.0.1:9000/api/users/65dd88b09899e6d059947742
+
+Metodo PUT
+http://127.0.0.1:9000/api/users/65dd9de35c19b5f420acc6f9
+
+{
+    "name": "Angel",
+    "app": "Osoños",
+    "apm": "Gomez",
+    "date": "2024/03/24",
+    "email": "al221811793@gmail.com",
+    "password": "1234568"
+}
+
+Metodo Delete
+
+http://127.0.0.1:9000/api/users/65dd9de35c19b5f420acc6f9
