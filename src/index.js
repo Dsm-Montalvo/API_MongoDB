@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const userRoutes = require("./routes/user");
 const sensorRoutes = require("./routes/datosSensor");
-
+const usuariosRoutes = require("./routes/usuarios");
 const app = express();
 const port = process.env.PORT || 9000;
 
@@ -11,7 +11,7 @@ const port = process.env.PORT || 9000;
 app.use(express.json());
 app.use('/api', userRoutes);
 app.use('/api', sensorRoutes);
-
+app.use('/api', usuariosRoutes);
 //routes
 app.get("/", (req,res) => {
     res.send("Welcome to my api");
