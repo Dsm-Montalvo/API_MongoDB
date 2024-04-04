@@ -1,37 +1,37 @@
 const express = require("express");
-const datosSchema = require("../models/datosSensor");
+const apartadoSchema = require("../models/apartadoEspacio");
 
 const router = express.Router();
 
 
-router.post("/datosSensor", (req,res) => {
-    const datos = datosSchema(req.body);
+router.post("/apartadoEspacio", (req,res) => {
+    const datos = apartadoSchema(req.body);
     datos
         .save()
         .then((data)=> res.json(data))
         .catch((error) => res.json ({ message: error }));
 });
 
-//Get all users
-router.get("/datosSensor",(req, res )=>{
-    datosSchema
+//Get all data
+router.get("/apartadoEspacio",(req, res )=>{
+    apartadoSchema
         .find()
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
 
 //Get a data   
-router.get("/datosSensor/:aula", (req, res) => {
+router.get("/apartadoEspacio/:aula", (req, res) => {
     const { aula } = req.params;
-    datosSchema
+    apartadoSchema
         .findOne({ aula })
         .then ((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
 //Delete
-router.delete("/datosSensor/:id", (req, res) => {
+router.delete("/apartadoEspacio/:id", (req, res) => {
     const { id } = req.params;
-    datosSchema
+    apartadoSchema
         .deleteOne({ _id : id })
         .then ((data) => res.json(data))
         .catch((error) => res.json({ message: error }));

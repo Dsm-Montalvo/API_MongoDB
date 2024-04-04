@@ -1,26 +1,30 @@
 const mongoose = require("mongoose");
 
-const datosSchema = mongoose.Schema({
-    temperatura:{
+const apartadoSchema = mongoose.Schema({
+    fechaRegistro:{
         type: String,
         required: true  
     },
-    humedad:{
+    fechaUtilizar:{
         type:String,
         required: true
     },
-    movimiento:{
+    horaInicio:{
         type: String,
         required: true  
     },
-    fechaHora:{
-        type:String,
-        required: true
+    horaFinal:{
+        type: String,
+        required: true  
     },
     aula:{
         type:String,
         required: true
     },
+    idUsuario:{
+        type:String,
+        required: true
+    },
 });
 
-module.exports = mongoose.model('datosSensor', datosSchema);    
+module.exports = mongoose.model('aparadoEspacio', apartadoSchema);    

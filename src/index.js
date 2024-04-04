@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const userRoutes = require("./routes/user");
+const apartadoRoutes = require("./routes/apartadoEspacio");
+const aulaRoutes = require("./routes/aula");
 const sensorRoutes = require("./routes/datosSensor");
 const usuariosRoutes = require("./routes/usuarios");
 const app = express();
@@ -11,6 +13,8 @@ const port = process.env.PORT || 9000;
 app.use(express.json());
 app.use('/api', userRoutes);
 app.use('/api', sensorRoutes);
+app.use('/api', apartadoRoutes);
+app.use('/api', aulaRoutes);
 app.use('/api', usuariosRoutes);
 //routes
 app.get("/", (req,res) => {
