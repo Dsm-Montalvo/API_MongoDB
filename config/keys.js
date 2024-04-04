@@ -1,0 +1,3 @@
+module.exports = {
+    secretOrKey: '0439434dae91c10c3bc073af1e76addf8f57a30ce0a7de0438b3aaad34b85200d41d01078f2ee786b3130b4ed4e39e3e26090da5d9f87420454dfdd182761cce'
+};
