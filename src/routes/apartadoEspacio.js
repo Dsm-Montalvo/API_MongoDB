@@ -29,10 +29,10 @@ router.get("/apartadoEspacio/aula/:aula", (req, res) => {
         .catch((error) => res.json({ message: error }));
 });
 
-router.get("/apartadoEspacio/id/:id", (req, res) => {
-    const { id } = req.params;
+router.get("/apartadoEspacio/id/:idUsuario", (req, res) => {
+    const { idUsuario } = req.params;
     apartadoSchema
-        .findOne({ id })
+        .findOne({ idUsuario })
         .then ((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
