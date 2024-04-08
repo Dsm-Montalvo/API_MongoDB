@@ -32,7 +32,7 @@ router.get("/apartadoEspacio/:aula", (req, res) => {
 router.delete("/apartadoEspacio/:id", (req, res) => {
     const { id } = req.params;
     apartadoSchema
-        .deleteOne({ _id : id })
+        .deleteOne({ idUsuario : id })
         .then ((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
