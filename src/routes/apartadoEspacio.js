@@ -21,7 +21,7 @@ router.get("/apartadoEspacio",(req, res )=>{
 });
 
 //Get a data   
-router.get("/apartadoEspacio/:aula", (req, res) => {
+router.get("/apartadoEspacio/aula/:aula", (req, res) => {
     const { aula } = req.params;
     apartadoSchema
         .findOne({ aula })
@@ -29,7 +29,7 @@ router.get("/apartadoEspacio/:aula", (req, res) => {
         .catch((error) => res.json({ message: error }));
 });
 //Delete
-router.delete("/apartadoEspacio/:id", (req, res) => {
+router.delete("/apartadoEspacio/id/:id", (req, res) => {
     const { id } = req.params;
     apartadoSchema
         .deleteOne({ idUsuario : id })
