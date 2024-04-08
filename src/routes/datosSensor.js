@@ -37,6 +37,13 @@ router.delete("/datosSensor/:id", (req, res) => {
         .catch((error) => res.json({ message: error }));
 });
 
+router.get("/ultimosDatos", (req, res) => {
+    datosSchema
+        .findOne({}, {}, { sort: { 'fechaHora': -1 } })
+        .select('temperatura humedad movimiento')
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message: error }));
+});
 
 
 module.exports = router; 
