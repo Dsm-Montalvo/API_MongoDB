@@ -24,7 +24,7 @@ router.get("/apartadoEspacio",(req, res )=>{
 router.get("/apartadoEspacio/aula/:aula", (req, res) => {
     const { aula } = req.params;
     apartadoSchema
-        .findOne({ aula })
+        .find({ aula })
         .then ((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
@@ -32,8 +32,8 @@ router.get("/apartadoEspacio/aula/:aula", (req, res) => {
 router.get("/apartadoEspacio/id/:idUsuario", (req, res) => {
     const { idUsuario } = req.params;
     apartadoSchema
-        .findOne({ idUsuario })
-        .then ((data) => res.json(data))
+        .find({ idUsuario: idUsuario })
+        .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
 //Delete
