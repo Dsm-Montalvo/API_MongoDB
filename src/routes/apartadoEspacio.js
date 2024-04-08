@@ -28,11 +28,19 @@ router.get("/apartadoEspacio/aula/:aula", (req, res) => {
         .then ((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
-//Delete
-router.delete("/apartadoEspacio/id/:id", (req, res) => {
+
+router.get("/apartadoEspacio/id/:id", (req, res) => {
     const { id } = req.params;
     apartadoSchema
-        .deleteOne({ idUsuario : id })
+        .findOne({ id })
+        .then ((data) => res.json(data))
+        .catch((error) => res.json({ message: error }));
+});
+//Delete
+router.delete("/apartadoEspacio/:id", (req, res) => {
+    const { id } = req.params;
+    apartadoSchema
+        .deleteOne({ _id : id })
         .then ((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
