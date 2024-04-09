@@ -25,6 +25,10 @@ const apartadoSchema = mongoose.Schema({
         type:String,
         required: true
     },
+    nombreUsuario:{
+        type:String,
+        require: true
+    }
 });
 
 module.exports = mongoose.model('aparadoEspacio', apartadoSchema);    
