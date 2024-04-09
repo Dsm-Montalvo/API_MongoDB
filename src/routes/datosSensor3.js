@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.post("/datosSensor3", (req,res) => {
-    const datos = datosSchema(req.body);
+    const datos = datosSchema3(req.body);
     datos
         .save()
         .then((data)=> res.json(data))
@@ -14,7 +14,7 @@ router.post("/datosSensor3", (req,res) => {
 
 //Get all users
 router.get("/datosSensor3",(req, res )=>{
-    datosSchema
+    datosSchema3
         .find()
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
@@ -23,7 +23,7 @@ router.get("/datosSensor3",(req, res )=>{
 //Get a data   
 router.get("/datosSensor3/:aula", (req, res) => {
     const { aula } = req.params;
-    datosSchema
+    datosSchema3
         .findOne({ aula })
         .then ((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
@@ -31,14 +31,14 @@ router.get("/datosSensor3/:aula", (req, res) => {
 //Delete
 router.delete("/datosSensor3/:id", (req, res) => {
     const { id } = req.params;
-    datosSchema
+    datosSchema3
         .deleteOne({ _id : id })
         .then ((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
 
 router.get("/ultimosDatos3", (req, res) => {
-    datosSchema
+    datosSchema3
         .findOne({}, {}, { sort: { 'fechaHora': -1 } })
         .select('temperatura humedad movimiento')
         .then((data) => res.json(data))
