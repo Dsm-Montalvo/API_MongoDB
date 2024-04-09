@@ -39,23 +39,30 @@ router.post("/usuarios", async (req, res) => {
         });
     }
 });
-
+//ruta modificada 
 router.post("/usuarios/profesores", async (req, res) => {
-    const { name, app, apm, date, email, password } = req.body;
+    const { name, app, apm, date, email, password, huellaId } = req.body;
     
     try {
-        // Hash de la contraseña
+        // Verificar si el ID de la huella dactilar ya está en uso
+        const existingUser = await usuariosSchema.findOne({ huellaId: huellaId });
+        if (existingUser) {
+            return res.status(400).json({ message: 'El ID de la huella dactilar ya está en uso.' });
+        }
+
+        // Hash de la contraseña    
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Crear el nuevo usuario con la contraseña hasheada
+        // Crear el nuevo usuario con la contraseña hasheada y la huella dactilar
         const user = new usuariosSchema({
             name,
             app,
             apm,
             date,
             email,
-            password: hashedPassword , // Asignar la contraseña hasheada al usuario
+            password: hashedPassword, // Asignar la contraseña hasheada al usuario
             role: 'Profesor',
+            huellaId
         });
 
         // Guardar el usuario en la base de datos
@@ -70,6 +77,26 @@ router.post("/usuarios/profesores", async (req, res) => {
         });
     }
 });
+
+// validacion para el formulario de las huellas 
+router.get('/allHuellaIds', async (req, res) => {
+    try {
+      // Busca todos los usuarios y devuelve solo los campos huellaId
+      const docs = await usuariosSchema.find({}, 'huellaId');
+      if (docs) {
+        // Si los documentos existen, devuelve los campos huellaId
+        res.json(docs.map(doc => doc.huellaId));
+      } else {
+        // Si no se encuentran documentos, devuelve un error 404
+        res.status(404).json({ message: 'No se encontraron huellaId' });
+      }
+    } catch (err) {
+      // Si hay un error, devuelve un error 500
+      res.status(500).json({ message: err.message });
+    }
+  }); 
+
+
 
 router.get("/usuarios/token", async (req, res) => {
     try {
