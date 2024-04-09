@@ -6,6 +6,8 @@ const userRoutes = require("./routes/user");
 const apartadoRoutes = require("./routes/apartadoEspacio");
 const aulaRoutes = require("./routes/aula");
 const sensorRoutes = require("./routes/datosSensor");
+const sensor2Routes = require("./routes/datosSensor2");
+const sensor3Routes = require("./routes/datosSensor3");
 const usuariosRoutes = require("./routes/usuarios");
 // huellas 
 const huellasRoutes = require('./routes/datoshuella');
@@ -18,6 +20,8 @@ app.use(express.json());
 app.use(cors());
 app.use('/api', userRoutes);
 app.use('/api', sensorRoutes);
+app.use('/api', sensor2Routes);
+app.use('/api', sensor3Routes);
 app.use('/api', apartadoRoutes);
 app.use('/api', aulaRoutes);
 app.use('/api', usuariosRoutes);
