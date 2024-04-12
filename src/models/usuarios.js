@@ -32,7 +32,7 @@ const usuariosSchema = new mongoose.Schema({
     // agrege el campo huella a la coleccion de roles 
     huellaId: {
         type: String,
-        required: true
+       /*  required: true */
     },
 },
 // se agrego el timestamp ya que me va ayudar hacer otras peticiones a los maestro
