@@ -39,6 +39,39 @@ router.post("/usuarios", async (req, res) => {
         });
     }
 });
+
+//segunda ruta 
+
+router.post("/usuarios/profe", async (req, res) => {
+    const { name, app, apm, date, email, password } = req.body;
+    
+    try {
+        // Hash de la contraseña
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Crear el nuevo usuario con la contraseña hasheada
+        const user = new usuariosSchema({
+            name,
+            app,
+            apm,
+            date,
+            email,
+            password: hashedPassword , // Asignar la contraseña hasheada al usuario
+            role: 'Profesor',
+        });
+
+        // Guardar el usuario en la base de datos
+        const savedUser = await user.save();
+
+        res.status(201).json(savedUser); // Devolver el usuario guardado en la respuesta
+    } catch (error) {
+        console.error('Error al guardar el usuario:', error);
+        res.status(500).json({ 
+            success: false,
+            message: 'Error en el servidor' 
+        });
+    }
+});
 //ruta modificada 
 router.post("/usuarios/profesores", async (req, res) => {
     const { name, app, apm, date, email, password, huellaId } = req.body;
